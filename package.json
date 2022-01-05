@@ -1,0 +1,42 @@
+{
+  "name": "@raven/page",
+  "version": "1.0.0-rc.5",
+  "description": "Vue CRUD Page Component",
+  "main": "lib/page.umd.js",
+  "scripts": {
+    "watch": "vue-cli-service build --watch --dest lib --target lib --name page ./src/index.js",
+    "build:lib": "vue-cli-service build --dest lib --target lib --name page ./src/index.js --modern",
+    "build:ts": "tsc",
+    "build": " rm -rf ./lib && npm run build:lib && npm run build:ts",
+    "webpack:out": "vue-cli-service inspect > output.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "typings": "lib/type.d.ts",
+  "keywords": [
+    "Vue",
+    "CRUD"
+  ],
+  "dependencies": {
+    "@raven/cell": "^1.0.19",
+    "@raven/theme": "^1.0.19",
+    "lodash": "^4.17.21",
+    "vue": "^2.6.0",
+    "vue-class-component": "^7.2.6",
+    "vue-property-decorator": "^9.1.2",
+    "vue-template-compiler": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.178",
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-typescript": "^3.2.0",
+    "@vue/cli-plugin-unit-jest": "^3.5.1",
+    "@vue/cli-service": "^3.2.0",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.3.1",
+    "typescript": "^4.3.5"
+  },
+  "author": "xujun",
+  "license": "MIT"
+}
