@@ -137,10 +137,7 @@ vue.use(Page)
 
 ### 结果
 
-* ![avatar](https://cdn17.pingpongx.com/static_platform/rvPage.png)
-
-
-
+ ![avatar](https://cdn17.pingpongx.com/static_platform/rvPage.png)
 
 
 
