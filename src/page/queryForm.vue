@@ -52,13 +52,22 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
         break
       case formItemTypeEnum.CHECKBOXGROUP:
         result = (
-          <FormItemCheckboxGroup
-            label={label}
-            prop={prop}
-            vModel={(form as T)[`${prop}`]}
-            options={options}
-            {...{ props: rest, on }}
-          />
+          <rv-form-item label={label} prop={prop}>
+            <rv-checkbox-group
+              vModel={(form as T)[`${prop}`]}
+              style="width:250px"
+              {...{ props: rest, on }}
+            >
+              {options &&
+                options.map((option) => {
+                  return (
+                    <rv-checkbox label={option.value} key={option.value}>
+                      {option.label}
+                    </rv-checkbox>
+                  )
+                })}
+            </rv-checkbox-group>
+          </rv-form-item>
         )
         break
       case formItemTypeEnum.INPUT:
