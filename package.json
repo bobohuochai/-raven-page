@@ -1,6 +1,6 @@
 {
   "name": "@raven/page",
-  "version": "1.0.0-rc.7.2",
+  "version": "1.0.0-rc.7.7",
   "description": "Vue CRUD Page Component",
   "main": "lib/page.umd.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "build:ts": "tsc",
     "build": " rm -rf ./lib && npm run build:lib && npm run build:ts",
     "webpack:out": "vue-cli-service inspect > output.js",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "release":"npm run build && npm publish"
   },
   "files": [
     "lib"
