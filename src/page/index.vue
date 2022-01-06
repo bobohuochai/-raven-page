@@ -102,6 +102,9 @@ export default class Page<
   }
 
   async load() {
+    if (!this.onSearch) {
+      return
+    }
     this.innerTableConfig.loading = true
     const data = await this.onSearch(
       this.queryConfig ? (this.queryConfig.form as Search) : undefined,
@@ -155,6 +158,7 @@ export default class Page<
                 查询
               </rv-button>
             )}
+            {this.$slots.filter_action}
           </div>
         </div>
         <rv-divider />
@@ -189,6 +193,10 @@ export default class Page<
   onPageSizeChange(paging: Paging<T>) {
     this.innerTableConfig.paging!.pageNo = 1
     this.innerTableConfig.paging!.pageSize = paging.pageSize
+    this.load()
+  }
+
+  refreshTable() {
     this.load()
   }
 }

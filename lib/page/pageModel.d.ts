@@ -26,7 +26,8 @@ export declare enum formItemTypeEnum {
     SELECT = 0,
     INPUT = 1,
     DATE = 2,
-    COMPONENT = 3
+    CHECKBOXGROUP = 3,
+    COMPONENT = 4
 }
 export interface FormItemConfig extends Partial<Omit<FormItem, 'prop'>> {
     type: formItemTypeEnum;

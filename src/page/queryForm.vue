@@ -10,13 +10,19 @@ import { QueryConfig, formItemTypeEnum, FormItemConfig } from './pageModel'
 import FormItemInput from './formItem/input.vue'
 import FormItemSelect from './formItem/select.vue'
 import FormItemDate from './formItem/date.vue'
+import FormItemCheckboxGroup from './formItem/checkboxgroup.vue'
 
 @Component({
   name: 'query-form',
-  components: { FormItemInput, FormItemSelect, FormItemDate },
-  props:{
-    config:{
-      default(){
+  components: {
+    FormItemInput,
+    FormItemSelect,
+    FormItemDate,
+    FormItemCheckboxGroup
+  },
+  props: {
+    config: {
+      default() {
         return true
       }
     }
@@ -36,6 +42,17 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
       case formItemTypeEnum.SELECT:
         result = (
           <form-item-select
+            label={label}
+            prop={prop}
+            vModel={(form as T)[`${prop}`]}
+            options={options}
+            {...{ props: rest, on }}
+          />
+        )
+        break
+      case formItemTypeEnum.CHECKBOXGROUP:
+        result = (
+          <FormItemCheckboxGroup
             label={label}
             prop={prop}
             vModel={(form as T)[`${prop}`]}
@@ -81,7 +98,6 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
   }
 
   render(h: any) {
-    console.log('query form render')
     const { $slots } = this
     let { inline, labelWidth, labelPosition, items, on, ...rest } = this.config
     if (!labelWidth) labelWidth = '100px'

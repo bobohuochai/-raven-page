@@ -134,7 +134,6 @@ export default class WrapCardTable<T> extends Vue {
   }
 
   render(h: any) {
-    console.log('wrap table render===>')
     let { headerCellStyle, cellStyle } = this.config
     const { loading, data, columns, total, paging, on, ...rest } = this.config
     const innerTableProps = this.convertInnerPropToKebabCase(rest)
