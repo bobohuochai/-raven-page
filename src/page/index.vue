@@ -45,6 +45,16 @@ export default class Page<
     paging?: Paging<T>
   ) => Promise<Paging<T> | Array<T>>
 
+  @Watch('tableConfig', { deep: true })
+  onTableConfigChange(newValue: TableConfig<T>) {
+    this.setState({
+      innerTableConfig: {
+        ...this.innerTableConfig,
+        ...newValue
+      }
+    })
+  }
+
   innerTableConfig: TableConfig<T>
 
   created() {
@@ -187,12 +197,14 @@ export default class Page<
   onPageChange(paging: Paging<T>) {
     this.innerTableConfig.paging!.pageNo = paging.pageNo
     this.innerTableConfig.paging!.pageSize = paging.pageSize
+    this.$emit('pagingChange', this.innerTableConfig.paging)
     this.load()
   }
 
   onPageSizeChange(paging: Paging<T>) {
     this.innerTableConfig.paging!.pageNo = 1
     this.innerTableConfig.paging!.pageSize = paging.pageSize
+    this.$emit('pagingChange', this.innerTableConfig.paging)
     this.load()
   }
 

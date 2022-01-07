@@ -1,6 +1,6 @@
 {
   "name": "@raven/page",
-  "version": "1.0.0-rc.7.16",
+  "version": "1.0.0-rc.7.18",
   "description": "Vue CRUD Page Component",
   "main": "lib/page.umd.js",
   "scripts": {
