@@ -2,23 +2,23 @@
 import { Component, Vue, Model, Prop, Watch } from 'vue-property-decorator'
 
 @Component({
-  name: 'form-item-checkbox-group'
+  name: 'form-item-radio-group'
 })
-export default class FormItemCheckboxGroup extends Vue {
+export default class FormItemRadioGroup extends Vue {
   @Prop({
     type: Array
   })
   options: { value: string; label: string }[]
 
   @Prop({
-    type: Array
+    type: String
   })
-  initValue: []
+  initValue: string
 
-  innerValue: string[] = []
+  innerValue = ''
 
   @Watch('initValue', { immediate: true })
-  onChangeInnerValueChange(value: string[]) {
+  onChangeInnerValueChange(value: string) {
     this.innerValue = this.initValue
   }
 
@@ -30,14 +30,14 @@ export default class FormItemCheckboxGroup extends Vue {
     const { label, prop, ...rest } = this.$attrs
     return (
       <rv-form-item label={label} prop={prop}>
-        <rv-checkbox-group
+        <rv-radio-group
           clearable
           vModel={this.innerValue}
           {...{
             props: rest,
             on: {
               ...this.$listeners,
-              change: (value: string[]) => {
+              change: (value: string) => {
                 this.$emit('update:value', value)
                 this.$emit('change', value)
               }
@@ -45,11 +45,11 @@ export default class FormItemCheckboxGroup extends Vue {
           }}
         >
           {options.map((option: { value: string; label: string }) => (
-            <rv-checkbox key={option.value} label={option.value}>
+            <rv-radio key={option.value} label={option.value}>
               {option.label}
-            </rv-checkbox>
+            </rv-radio>
           ))}
-        </rv-checkbox-group>
+        </rv-radio-group>
       </rv-form-item>
     )
   }

@@ -11,6 +11,7 @@ import FormItemInput from './formItem/input.vue'
 import FormItemSelect from './formItem/select.vue'
 import FormItemDate from './formItem/date.vue'
 import FormItemCheckboxGroup from './formItem/checkboxgroup.vue'
+import FormItemRadioGroup from './formItem/radiogroup.vue'
 
 @Component({
   name: 'query-form',
@@ -18,7 +19,8 @@ import FormItemCheckboxGroup from './formItem/checkboxgroup.vue'
     FormItemInput,
     FormItemSelect,
     FormItemDate,
-    FormItemCheckboxGroup
+    FormItemCheckboxGroup,
+    FormItemRadioGroup
   },
   props: {
     config: {
@@ -52,22 +54,40 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
         break
       case formItemTypeEnum.CHECKBOXGROUP:
         result = (
-          <rv-form-item label={label} prop={prop}>
-            <rv-checkbox-group
-              vModel={(form as T)[`${prop}`]}
-              style="width:250px"
-              {...{ props: rest, on }}
-            >
-              {options &&
-                options.map((option) => {
-                  return (
-                    <rv-checkbox label={option.value} key={option.value}>
-                      {option.label}
-                    </rv-checkbox>
-                  )
-                })}
-            </rv-checkbox-group>
-          </rv-form-item>
+          <FormItemCheckboxGroup
+            prop={prop}
+            label={label}
+            initValue={(form as T)[`${prop}`]}
+            options={options}
+            {...{
+              props: rest,
+              on: {
+                'update:value': function (value: string[]) {
+                  ;(form as any)[`${prop}`] = value
+                },
+                ...on
+              }
+            }}
+          ></FormItemCheckboxGroup>
+        )
+        break
+      case formItemTypeEnum.RADIOGROUP:
+        result = (
+          <FormItemRadioGroup
+            prop={prop}
+            label={label}
+            initValue={(form as T)[`${prop}`]}
+            options={options}
+            {...{
+              props: rest,
+              on: {
+                'update:value': function (value: string) {
+                  ;(form as any)[`${prop}`] = value
+                },
+                ...on
+              }
+            }}
+          ></FormItemRadioGroup>
         )
         break
       case formItemTypeEnum.INPUT:

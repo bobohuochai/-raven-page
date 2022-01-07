@@ -39,6 +39,7 @@ export enum formItemTypeEnum {
   INPUT,
   DATE,
   CHECKBOXGROUP,
+  RADIOGROUP,
   COMPONENT
 }
 
