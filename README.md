@@ -68,13 +68,19 @@ vue.use(Page)
     form: {},
     items: [
       {
+        // 属性 必填
         prop: 'clientId',
+        // 标签
         label: '客户ID',
+        // 类型
         type: formItemTypeEnum.INPUT,
+        // 监听事件，参考element-ui 该类型组件（现在是input可监听事件
         on: {
           change: this.clientIdChange
         },
+        // 初始值
         value: 'init'
+        // 剩余配置参数可参考element-ui 该类型（现在是input)组件可配置属性
       },
       {
         prop: 'name',
@@ -142,7 +148,45 @@ vue.use(Page)
 
 
 # 内容
-* ~~查询筛选~~
+* ~~查询筛选~~ 
+  
+查询Form Item 类型支持：
+
+``` javascript
+
+  export enum formItemTypeEnum {
+  SELECT,
+  INPUT,
+  DATE,
+  CHECKBOXGROUP,
+  RADIOGROUP,
+  COMPONENT
+  }
+
+```
+
+查询Form Item 配置方法：
+
+``` javascript
+
+     {
+        // 属性 必填
+        prop: 'clientId',
+        // 标签
+        label: '客户ID',
+        // 类型
+        type: formItemTypeEnum.INPUT,
+        // 监听事件，参考element-ui 该类型组件（现在是input可监听事件
+        on: {
+          change: this.clientIdChange
+        },
+        // 初始值
+        value: 'init'
+        // 剩余配置参数可参考element-ui 该类型（现在是input)组件可配置属性
+      }
+
+```
+
 * ~~表格分页排序~~
 * 弹出窗新增，批量新增（todo）
 * 修改，表格直接修改，批量修改，excel修改模式（todo)
