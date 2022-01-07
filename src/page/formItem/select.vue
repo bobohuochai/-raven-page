@@ -16,7 +16,7 @@ export default class FormItemSelect extends Vue {
   render() {
     const { options } = this.$props
     if (!options || !options.length) {
-      throw new Error('select 组件需配置options选项')
+      return
     }
     const { label, prop, ...rest } = this.$attrs
     return (

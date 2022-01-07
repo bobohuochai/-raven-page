@@ -43,6 +43,11 @@ export enum formItemTypeEnum {
   COMPONENT
 }
 
+export enum queryFormStyleMode {
+  INLINE,
+  Wrap
+}
+
 type formItemConfigType = FormItem | Select | Input | DatePicker
 
 export interface FormItemConfig extends Partial<Omit<FormItem, 'prop'>> {

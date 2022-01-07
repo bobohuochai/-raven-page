@@ -20,13 +20,15 @@ import { Paging, Column, TableConfig, QueryConfig } from './pageModel'
       default() {
         return true
       }
+    },
+    inline: {
+      default() {
+        return true
+      }
     }
   }
 })
-export default class Page<
-  T,
-  Search extends { [key: string]: any }
-> extends Vue {
+export default class Page<T, Search extends Record<string, any>> extends Vue {
   @Prop({
     required: true
   })
@@ -55,7 +57,7 @@ export default class Page<
     })
   }
 
-  innerTableConfig: TableConfig<T>
+  innerTableConfig: TableConfig<T> = { columns: [], data: [] }
 
   created() {
     this.initTableConfig()
@@ -72,7 +74,10 @@ export default class Page<
     if (this.queryConfig.items.length) {
       for (const item of this.queryConfig.items) {
         const { prop, value } = item
-        if (!Object.keys(this.queryConfig!.form).includes(prop as string)) {
+        if (
+          this.queryConfig.form &&
+          !Object.keys(this.queryConfig!.form).includes(prop as string)
+        ) {
           this.$set(this.queryConfig!.form, `${prop}`, value ? value : '')
         }
       }
@@ -152,11 +157,12 @@ export default class Page<
   }
 
   render() {
+    const { inline } = this.$props
     return (
       <rv-card class="box-card">
         <div class="prefix">{this.$slots.prefix}</div>
         <div class="page-header">{this.$slots.header}</div>
-        <div class="filter">
+        <div class={inline ? 'filter inline' : 'filter'}>
           {this.renderQueryForm()}
           <div class="action-box">
             {this.$props.onSearch && (
@@ -229,10 +235,15 @@ export default class Page<
 .filter {
   margin: 0 5px 10px;
 }
+.filter.inline {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
 .action-box {
   display: flex;
   flex-wrap: auto;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
 </style>

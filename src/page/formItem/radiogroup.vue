@@ -25,7 +25,7 @@ export default class FormItemRadioGroup extends Vue {
   render() {
     const { options } = this.$props
     if (!options || !options.length) {
-      throw new Error('checkbox group 组件需配置options选项')
+      return
     }
     const { label, prop, ...rest } = this.$attrs
     return (
