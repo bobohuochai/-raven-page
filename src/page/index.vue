@@ -206,14 +206,14 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
   onPageChange(paging: Paging<T>) {
     this.innerTableConfig.paging!.pageNo = paging.pageNo
     this.innerTableConfig.paging!.pageSize = paging.pageSize
-    this.$emit('pagingChange', this.innerTableConfig.paging)
+    this.$emit('pageNoChange', this.innerTableConfig.paging)
     this.load()
   }
 
   onPageSizeChange(paging: Paging<T>) {
     this.innerTableConfig.paging!.pageNo = 1
     this.innerTableConfig.paging!.pageSize = paging.pageSize
-    this.$emit('pagingChange', this.innerTableConfig.paging)
+    this.$emit('pageSizeChange', this.innerTableConfig.paging)
     this.load()
   }
 
