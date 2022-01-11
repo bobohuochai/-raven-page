@@ -105,8 +105,16 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
           <form-item-date
             label={label}
             prop={prop}
-            vModel={(form as T)[`${prop}`]}
-            {...{ props: rest, on }}
+            initValue={(form as T)[`${prop}`]}
+            {...{
+              props: rest,
+              on: {
+                'update:value': function (value: string) {
+                  ;(form as any)[`${prop}`] = value
+                },
+                ...on
+              }
+            }}
           />
         )
         break

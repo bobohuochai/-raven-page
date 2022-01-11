@@ -1,12 +1,21 @@
 <script lang="tsx">
-import { Component, Vue, Model } from 'vue-property-decorator'
+import { Component, Vue, Model, Prop, Watch } from 'vue-property-decorator'
 
 @Component({
-  name: 'form-item-input'
+  name: 'form-item-date'
 })
-export default class FormItemInput extends Vue {
-  @Model('change', { type: Date })
-  innerValue: Date
+export default class FormItemDate extends Vue {
+  @Prop({
+    type: Date
+  })
+  initValue: Date
+
+  innerValue: Date | null = null
+
+  @Watch('initValue', { immediate: true })
+  onInitValueChange(newValue: Date | null) {
+    this.innerValue = newValue
+  }
 
   render() {
     const { label, prop, ...rest } = this.$attrs
@@ -15,11 +24,12 @@ export default class FormItemInput extends Vue {
         <rv-date-picker
           clearable
           style="width: 250px"
-          value={this.innerValue}
+          vModel={this.innerValue}
           {...{
             props: rest,
             on: {
               change: (value: Date) => {
+                this.$emit('update:value', value)
                 this.$emit('change', value)
               },
               ...this.$listeners
