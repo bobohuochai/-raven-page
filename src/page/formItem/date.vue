@@ -5,10 +5,13 @@ import { Component, Vue, Model, Prop, Watch } from 'vue-property-decorator'
   name: 'form-item-date'
 })
 export default class FormItemDate extends Vue {
+  @Prop({})
+  initValue: Date | string | null
+
   @Prop({
-    type: Date
+    type: String
   })
-  initValue: Date
+  dateType: string
 
   innerValue: Date | null = null
 
@@ -25,6 +28,7 @@ export default class FormItemDate extends Vue {
           clearable
           style="width: 250px"
           vModel={this.innerValue}
+          type={this.dateType}
           {...{
             props: rest,
             on: {

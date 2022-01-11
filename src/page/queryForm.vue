@@ -12,6 +12,7 @@ import FormItemSelect from './formItem/select.vue'
 import FormItemDate from './formItem/date.vue'
 import FormItemCheckboxGroup from './formItem/checkboxgroup.vue'
 import FormItemRadioGroup from './formItem/radiogroup.vue'
+import { omit } from 'lodash'
 
 @Component({
   name: 'query-form',
@@ -106,8 +107,9 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
             label={label}
             prop={prop}
             initValue={(form as T)[`${prop}`]}
+            dateType={(rest as any).dateType}
             {...{
-              props: rest,
+              props: omit(rest, 'dateType'),
               on: {
                 'update:value': function (value: string) {
                   ;(form as any)[`${prop}`] = value
