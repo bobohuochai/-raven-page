@@ -113,7 +113,9 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
         config={this.queryConfig}
         scopedSlots={this.$scopedSlots}
       ></QueryForm>
-    ) : null
+    ) : (
+      <div class="user-filter">{this.$slots.filter}</div>
+    )
   }
 
   async load() {
@@ -181,6 +183,7 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
         <WrapCardTable
           config={this.innerTableConfig}
           scopedSlots={this.$scopedSlots}
+          slots={this.$slots}
           {...{
             on: {
               'page-size': this.onPageSizeChange,

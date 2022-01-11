@@ -138,6 +138,7 @@ export default class WrapCardTable<T> extends Vue {
     const { loading, data, columns, total, paging, on, ...rest } = this.config
     const innerTableProps = this.convertInnerPropToKebabCase(rest)
     const innerTableFuncs = on ? this.convertInnerPropToKebabCase(on) : {}
+    const { slots } = this.$attrs
     if (!headerCellStyle) {
       headerCellStyle = {
         'text-align': 'center',
@@ -150,7 +151,7 @@ export default class WrapCardTable<T> extends Vue {
 
     return (
       <div class="box-card">
-        <div class="table-header">{this.$slots.tableHeader}</div>
+        <div class="table-header">{(slots as any).tableHeader}</div>
         <div class="table-container" v-loading={this.config.loading}>
           <rv-table
             ref="wrapCardTable"
