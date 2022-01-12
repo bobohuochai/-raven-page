@@ -49,7 +49,7 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
             prop={prop}
             vModel={(form as T)[`${prop}`]}
             options={options}
-            {...{ props: rest, on }}
+            {...{ attrs: rest, on }}
           />
         )
         break
@@ -61,7 +61,7 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
             initValue={(form as T)[`${prop}`]}
             options={options}
             {...{
-              props: rest,
+              attrs: rest,
               on: {
                 'update:value': function (value: string[]) {
                   ;(form as any)[`${prop}`] = value
@@ -80,7 +80,7 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
             initValue={(form as T)[`${prop}`]}
             options={options}
             {...{
-              props: rest,
+              attrs: rest,
               on: {
                 'update:value': function (value: string) {
                   ;(form as any)[`${prop}`] = value
@@ -97,7 +97,7 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
             label={label}
             prop={prop}
             vModel={(form as T)[`${prop}`]}
-            {...{ props: rest, on }}
+            {...{ attrs: rest, on }}
           />
         )
         break
@@ -109,7 +109,7 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
             initValue={(form as T)[`${prop}`]}
             dateType={(rest as any).dateType}
             {...{
-              props: omit(rest, 'dateType'),
+              attrs: omit(rest, 'dateType'),
               on: {
                 'update:value': function (value: string) {
                   ;(form as any)[`${prop}`] = value

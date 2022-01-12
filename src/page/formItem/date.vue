@@ -30,7 +30,7 @@ export default class FormItemDate extends Vue {
           vModel={this.innerValue}
           type={this.dateType}
           {...{
-            props: rest,
+            attrs: rest,
             on: {
               change: (value: Date) => {
                 this.$emit('update:value', value)

@@ -26,7 +26,7 @@ export default class FormItemSelect extends Vue {
           style="width: 250px"
           value={this.innerValue}
           {...{
-            props: rest,
+            attrs: rest,
             on: {
               change: (value: string) => {
                 this.$emit('change', value)

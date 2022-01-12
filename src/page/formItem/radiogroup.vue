@@ -34,7 +34,7 @@ export default class FormItemRadioGroup extends Vue {
           clearable
           vModel={this.innerValue}
           {...{
-            props: rest,
+            attrs: rest,
             on: {
               ...this.$listeners,
               change: (value: string) => {

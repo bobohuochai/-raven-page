@@ -17,7 +17,7 @@ export default class FormItemInput extends Vue {
           style="width: 250px"
           value={this.innerValue}
           {...{
-            props: rest,
+            attrs: rest,
             on: {
               input: (value: string) => {
                 this.$emit('input', value)
