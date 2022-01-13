@@ -64,41 +64,55 @@ export default class WrapCardTable<T> extends Vue {
     return object
   }
 
+  renderColumn(h: any, column: Column) {
+    const { prop, label, children, slot, ...rest } = column
+    const innerColumnProps = this.convertInnerPropToKebabCase(rest)
+    const slotColumn = (
+      <rv-table-column
+        key={prop}
+        prop={prop}
+        label={label}
+        {...{
+          attrs: innerColumnProps,
+          scopedSlots: {
+            default: (scopedSlot: any) => {
+              return h('div', [
+                (this.$scopedSlots as any)[`${slot}`]({
+                  row: scopedSlot.row,
+                  $index: scopedSlot.$index
+                })
+              ])
+            }
+          }
+        }}
+      >
+        {children && children.length && this.renderChildrenColumns(h, children)}
+      </rv-table-column>
+    )
+    const normalColumn = (
+      <rv-table-column
+        key={prop}
+        prop={prop}
+        label={label}
+        {...{ attrs: innerColumnProps }}
+      >
+        {children && children.length && this.renderChildrenColumns(h, children)}
+      </rv-table-column>
+    )
+    return column.slot ? slotColumn : normalColumn
+  }
+
+  renderChildrenColumns(h: any, children: Column[]) {
+    return children.map((item: Column) => {
+      return this.renderColumn(h, item)
+    })
+  }
+
   renderColumns(h: any) {
     return (
       this.config.columns &&
       this.config.columns.map((item: Column) => {
-        const { prop, label, slot, ...rest } = item
-        const innerColumnProps = this.convertInnerPropToKebabCase(rest)
-        const slotColumn = (
-          <rv-table-column
-            key={prop}
-            prop={prop}
-            label={label}
-            {...{
-              props: innerColumnProps,
-              scopedSlots: {
-                default: (scopedSlot: any) => {
-                  return h('div', [
-                    (this.$scopedSlots as any)[`${slot}`]({
-                      row: scopedSlot.row,
-                      $index: scopedSlot.$index
-                    })
-                  ])
-                }
-              }
-            }}
-          />
-        )
-        const column = (
-          <rv-table-column
-            key={prop}
-            prop={prop}
-            label={label}
-            {...{ props: innerColumnProps }}
-          />
-        )
-        return item.slot ? slotColumn : column
+        return this.renderColumn(h, item)
       })
     )
   }
