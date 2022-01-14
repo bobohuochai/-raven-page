@@ -227,7 +227,6 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
 .box-card {
   background: #ffffff;
   border: 1px solid rgba(46, 67, 105, 0.08);
-  margin: 0 24px;
   box-shadow: unset;
   padding: 16px 24px;
 

@@ -164,7 +164,7 @@ export default class WrapCardTable<T> extends Vue {
     }
 
     return (
-      <div class="box-card">
+      <div class="vpage-table-card">
         <div class="table-header">{(slots as any).tableHeader}</div>
         <div class="table-container" v-loading={this.config.loading}>
           <rv-table
