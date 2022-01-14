@@ -16,7 +16,7 @@ export interface Paging<T> {
 }
 export interface Column extends Partial<TableColumn> {
   slot?: string
-  children: Column[]
+  children?: Column[]
 }
 export interface TableConfig<T> extends Partial<Omit<Table, 'data'>> {
   name?: string
