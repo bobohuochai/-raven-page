@@ -140,7 +140,7 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
     const { $slots } = this
     let { inline, labelWidth, labelPosition, items, on, ...rest } = this.config
     if (!labelWidth) labelWidth = '100px'
-    if (!labelPosition) labelPosition = 'left'
+    if (!labelPosition) labelPosition = 'right'
     if (!inline) inline = true
     return (
       <rv-form
