@@ -130,31 +130,46 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
     if (data) {
       const { isPaging } = this.innerTableConfig
       if (isPaging) {
-        this.setState({
-          innerTableConfig: {
-            ...this.innerTableConfig,
-            data: cloneDeep((data as Paging<T>).records),
-            total: (data as Paging<T>).total,
-            loading: false
+        this.setState(
+          {
+            innerTableConfig: {
+              ...this.innerTableConfig,
+              data: cloneDeep((data as Paging<T>).records),
+              total: (data as Paging<T>).total,
+              loading: false
+            }
+          },
+          () => {
+            this.$emit('change', this.innerTableConfig)
           }
-        })
+        )
       } else {
-        this.setState({
-          innerTableConfig: {
-            ...this.innerTableConfig,
-            loading: false,
-            data
+        this.setState(
+          {
+            innerTableConfig: {
+              ...this.innerTableConfig,
+              loading: false,
+              data
+            }
+          },
+          () => {
+            this.$emit('change', this.innerTableConfig)
           }
-        })
+        )
       }
     } else {
-      this.setState({
-        innerTableConfig: {
-          ...this.innerTableConfig,
-          data: [],
-          loading: false
+      this.setState(
+        {
+          innerTableConfig: {
+            ...this.innerTableConfig,
+            data: [],
+            loading: false
+          }
+        },
+        () => {
+          this.$emit('change', this.innerTableConfig)
         }
-      })
+      )
     }
   }
 

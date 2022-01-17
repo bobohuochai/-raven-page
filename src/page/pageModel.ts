@@ -59,6 +59,8 @@ export interface FormItemConfig extends Partial<Omit<FormItem, 'prop'>> {
   on?: any
   prop: string
   value?: string | number | Date | any
+  dateType?: string
+  [key: string]: any
 }
 
 export interface QueryConfig<T extends Record<string, any>>
