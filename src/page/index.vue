@@ -57,6 +57,8 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
     })
   }
 
+  $refs: { wrapTable: WrapCardTable<T> }
+
   innerTableConfig: TableConfig<T> = { columns: [], data: [] }
 
   created() {
@@ -173,6 +175,10 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
     }
   }
 
+  getInnerTable() {
+    return this.$refs['wrapTable'].getInnerTable()
+  }
+
   render() {
     const { inline } = this.$props
     return (
@@ -196,6 +202,7 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
         </div>
         <rv-divider />
         <WrapCardTable
+          ref="wrapTable"
           config={this.innerTableConfig}
           scopedSlots={this.$scopedSlots}
           slots={this.$slots}
