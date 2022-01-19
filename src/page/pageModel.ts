@@ -14,11 +14,15 @@ export interface Paging<T> {
   pageNo?: number
   pageSize?: number
 }
-export interface Column extends Partial<TableColumn> {
+export interface Column
+  extends Partial<Omit<TableColumn, 'minWidth' | 'formatter'>> {
   slot?: string
   children?: Column[]
+  minWidth?: number | string
+  formatter?: any
 }
-export interface TableConfig<T> extends Partial<Omit<Table, 'data'>> {
+export interface TableConfig<T>
+  extends Partial<Omit<Table, 'data' | 'rowKey'>> {
   name?: string
   loading?: boolean
   data?: T[]
@@ -29,6 +33,8 @@ export interface TableConfig<T> extends Partial<Omit<Table, 'data'>> {
   // Table Event
   on?: any
   isPaging?: boolean
+  rowKey?: string
+  [key: string]: any
 }
 
 export interface PageConfig {
