@@ -28,10 +28,10 @@ export default class FormItemSelect extends Vue {
           {...{
             attrs: rest,
             on: {
+              ...this.$listeners,
               change: (value: string) => {
                 this.$emit('change', value)
-              },
-              ...this.$listeners
+              }
             }
           }}
         >

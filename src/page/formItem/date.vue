@@ -32,11 +32,11 @@ export default class FormItemDate extends Vue {
           {...{
             attrs: rest,
             on: {
+              ...this.$listeners,
               change: (value: Date) => {
                 this.$emit('update:value', value)
                 this.$emit('change', value)
-              },
-              ...this.$listeners
+              }
             }
           }}
         ></rv-date-picker>
