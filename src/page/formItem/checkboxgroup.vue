@@ -28,8 +28,10 @@ export default class FormItemCheckboxGroup extends Vue {
       return
     }
     const { label, prop, ...rest } = this.$attrs
+    let { labelWidth } = this.$attrs
+    if (!labelWidth) labelWidth = 'auto'
     return (
-      <rv-form-item label={label} prop={prop}>
+      <rv-form-item label={label} prop={prop} labelWidth={labelWidth}>
         <rv-checkbox-group
           clearable
           vModel={this.innerValue}
