@@ -1,5 +1,5 @@
 {
-  "name": "@alpha/vpage",
+  "name": "alpha-vpage",
   "version": "1.0.0-beta.0",
   "description": "Vue 2.x CRUD Page Component",
   "main": "lib/page.umd.js",
@@ -10,7 +10,7 @@
     "build": " rm -rf ./lib && npm run build:lib && npm run build:ts",
     "webpack:out": "vue-cli-service inspect > output.js",
     "lint": "vue-cli-service lint",
-    "release": "npm run build && npm publish"
+    "release": "npm run build && npm publish --access public"
   },
   "files": [
     "lib"

@@ -1,4 +1,4 @@
-# @alpha/vpage
+# alpha-vpage
 后台管理系统基础CRUD操作交互流程封装，组件依赖：
 * vue 2.x
 * Element UI 2.x
@@ -9,7 +9,7 @@
 
 ``` javascript
 
-import Page from '@alpha/vpage'
+import Page from 'alpha-vpage'
 import vue from 'vue'
 vue.use(Page)
 
