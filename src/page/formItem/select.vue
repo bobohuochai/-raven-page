@@ -22,8 +22,8 @@ export default class FormItemSelect extends Vue {
     let { labelWidth } = this.$attrs
     if (!labelWidth) labelWidth = 'auto'
     return (
-      <rv-form-item label={label} prop={prop} labelWidth={labelWidth}>
-        <rv-select
+      <el-form-item label={label} prop={prop} labelWidth={labelWidth}>
+        <el-select
           clearable
           style="width: 250px"
           value={this.innerValue}
@@ -38,14 +38,14 @@ export default class FormItemSelect extends Vue {
           }}
         >
           {options.map((option: { value: string; label: string }) => (
-            <rv-option
+            <el-option
               key={option.value}
               value={option.value}
               label={option.label}
-            ></rv-option>
+            ></el-option>
           ))}
-        </rv-select>
-      </rv-form-item>
+        </el-select>
+      </el-form-item>
     )
   }
 }

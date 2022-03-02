@@ -13,11 +13,11 @@ export default class FormItemDate extends Vue {
   })
   dateType: string
 
-  innerValue: Date | null = null
+  inneelalue: Date | null = null
 
   @Watch('initValue', { immediate: true })
   onInitValueChange(newValue: Date | null) {
-    this.innerValue = newValue
+    this.inneelalue = newValue
   }
 
   render() {
@@ -25,11 +25,11 @@ export default class FormItemDate extends Vue {
     let { labelWidth } = this.$attrs
     if (!labelWidth) labelWidth = 'auto'
     return (
-      <rv-form-item label={label} prop={prop} labelWidth={labelWidth}>
-        <rv-date-picker
+      <el-form-item label={label} prop={prop} labelWidth={labelWidth}>
+        <el-date-picker
           clearable
           style="width: 250px"
-          vModel={this.innerValue}
+          vModel={this.inneelalue}
           type={this.dateType}
           {...{
             attrs: rest,
@@ -41,8 +41,8 @@ export default class FormItemDate extends Vue {
               }
             }
           }}
-        ></rv-date-picker>
-      </rv-form-item>
+        ></el-date-picker>
+      </el-form-item>
     )
   }
 }

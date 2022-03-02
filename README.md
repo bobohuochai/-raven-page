@@ -1,7 +1,7 @@
-# rv-page
+# @alpha/vpage
 后台管理系统基础CRUD操作交互流程封装，组件依赖：
 * vue 2.x
-* 公司内部组件库 @raven/cell,@raven/theme
+* Element UI 2.x
 
 # Demo
 
@@ -9,7 +9,7 @@
 
 ``` javascript
 
-import Page from '@raven/page'
+import Page from '@alpha/vpage'
 import vue from 'vue'
 vue.use(Page)
 
@@ -122,22 +122,18 @@ vue.use(Page)
 ### 4.html 模版
 
 ``` html
-  <rv-page
+  <av-page
       :tableConfig="tableConfig"
       :queryConfig="queryFormConfig"
       :onSearch="search"
     >
       <template v-slot:q-phone="{ form }">
-        <GlobalPhoneInput
-          class="phone"
-          ref="globalPhoneInput"
-          :globalPhoneNumber.sync="form.phone"
-        />
+        
       </template>
       <template v-slot:c-orderId="{ row }">
         {{ `test column slot ${row.orderId}` }}
       </template>
-    </rv-page>
+    </av-page>
 
 ```
 

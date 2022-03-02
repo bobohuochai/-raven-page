@@ -68,7 +68,7 @@ export default class WrapCardTable<T> extends Vue {
     const { prop, label, children, slot, ...rest } = column
     const innerColumnProps = this.convertInnerPropToKebabCase(rest)
     const slotColumn = (
-      <rv-table-column
+      <el-table-column
         key={prop}
         prop={prop}
         label={label}
@@ -87,17 +87,17 @@ export default class WrapCardTable<T> extends Vue {
         }}
       >
         {children && children.length && this.renderChildrenColumns(h, children)}
-      </rv-table-column>
+      </el-table-column>
     )
     const normalColumn = (
-      <rv-table-column
+      <el-table-column
         key={prop}
         prop={prop}
         label={label}
         {...{ attrs: innerColumnProps }}
       >
         {children && children.length && this.renderChildrenColumns(h, children)}
-      </rv-table-column>
+      </el-table-column>
     )
     return column.slot ? slotColumn : normalColumn
   }
@@ -126,7 +126,7 @@ export default class WrapCardTable<T> extends Vue {
       innerPagingProps = this.convertInnerPropToKebabCase(rest)
     }
     const pageHtml = isShow ? (
-      <rv-pagination
+      <el-pagination
         class="page-container"
         layout="prev,pager,next,sizes,total,jumper"
         current-page={paging.pageNo}
@@ -167,7 +167,7 @@ export default class WrapCardTable<T> extends Vue {
       <div class="vpage-table-card">
         <div class="table-header">{(slots as any).tableHeader}</div>
         <div class="table-container" v-loading={this.config.loading}>
-          <rv-table
+          <el-table
             ref="wrapCardTable"
             data={this.config.data}
             border
@@ -176,7 +176,7 @@ export default class WrapCardTable<T> extends Vue {
             {...{ props: innerTableProps, on: innerTableFuncs }}
           >
             {this.renderColumns(h)}
-          </rv-table>
+          </el-table>
           {this.renderPagination()}
         </div>
       </div>

@@ -122,14 +122,14 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
         break
       case formItemTypeEnum.COMPONENT:
         result = (
-          <rv-form-item label={label} prop={prop}>
+          <el-form-item label={label} prop={prop}>
             {h('div', [
               (this.$scopedSlots as any)[`${slot}`]({
                 value: (form as T)[`${prop}`],
                 form
               })
             ])}
-          </rv-form-item>
+          </el-form-item>
         )
         break
     }
@@ -143,7 +143,7 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
     if (!labelPosition) labelPosition = 'right'
     if (!inline) inline = true
     return (
-      <rv-form
+      <el-form
         ref="queryForm"
         inline={inline}
         labelWidth={labelWidth}
@@ -155,7 +155,7 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
             this.renderFormItem(h, formItem)
           )}
         {$slots.default}
-      </rv-form>
+      </el-form>
     )
   }
 }

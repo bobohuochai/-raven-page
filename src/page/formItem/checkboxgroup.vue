@@ -15,11 +15,11 @@ export default class FormItemCheckboxGroup extends Vue {
   })
   initValue: []
 
-  innerValue: string[] = []
+  inneelalue: string[] = []
 
   @Watch('initValue', { immediate: true })
-  onChangeInnerValueChange(value: string[]) {
-    this.innerValue = this.initValue
+  onChangeInneelalueChange(value: string[]) {
+    this.inneelalue = this.initValue
   }
 
   render() {
@@ -31,10 +31,10 @@ export default class FormItemCheckboxGroup extends Vue {
     let { labelWidth } = this.$attrs
     if (!labelWidth) labelWidth = 'auto'
     return (
-      <rv-form-item label={label} prop={prop} labelWidth={labelWidth}>
-        <rv-checkbox-group
+      <el-form-item label={label} prop={prop} labelWidth={labelWidth}>
+        <el-checkbox-group
           clearable
-          vModel={this.innerValue}
+          vModel={this.inneelalue}
           {...{
             attrs: rest,
             on: {
@@ -47,12 +47,12 @@ export default class FormItemCheckboxGroup extends Vue {
           }}
         >
           {options.map((option: { value: string; label: string }) => (
-            <rv-checkbox key={option.value} label={option.value}>
+            <el-checkbox key={option.value} label={option.value}>
               {option.label}
-            </rv-checkbox>
+            </el-checkbox>
           ))}
-        </rv-checkbox-group>
-      </rv-form-item>
+        </el-checkbox-group>
+      </el-form-item>
     )
   }
 }

@@ -182,25 +182,25 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
   render() {
     const { inline } = this.$props
     return (
-      <rv-card class="box-card">
+      <el-card class="box-card">
         <div class="prefix">{this.$slots.prefix}</div>
         <div class="page-header">{this.$slots.header}</div>
         <div class={inline ? 'filter inline' : 'filter'}>
           {this.renderQueryForm()}
           <div class="action-box">
             {this.$props.onSearch && (
-              <rv-button
+              <el-button
                 type="primary"
                 class="search-btn"
                 {...{ on: { click: this.onSearchClick } }}
               >
                 查询
-              </rv-button>
+              </el-button>
             )}
             {this.$slots.filter_action}
           </div>
         </div>
-        <rv-divider />
+        <el-divider />
         <WrapCardTable
           ref="wrapTable"
           config={this.innerTableConfig}
@@ -214,7 +214,7 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
           }}
         ></WrapCardTable>
         {this.$slots.default}
-      </rv-card>
+      </el-card>
     )
   }
 

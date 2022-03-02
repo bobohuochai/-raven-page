@@ -1,7 +1,7 @@
 import Page from './page/index.vue'
 
 const install = function (Vue) {
-  Vue.component('rv-page', Page)
+  Vue.component('av-page', Page)
 }
 
 export default {

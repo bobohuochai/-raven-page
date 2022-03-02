@@ -31,8 +31,8 @@ export default class FormItemRadioGroup extends Vue {
     let { labelWidth } = this.$attrs
     if (!labelWidth) labelWidth = 'auto'
     return (
-      <rv-form-item label={label} prop={prop} labelWidth={labelWidth}>
-        <rv-radio-group
+      <el-form-item label={label} prop={prop} labelWidth={labelWidth}>
+        <el-radio-group
           clearable
           vModel={this.innerValue}
           {...{
@@ -47,12 +47,12 @@ export default class FormItemRadioGroup extends Vue {
           }}
         >
           {options.map((option: { value: string; label: string }) => (
-            <rv-radio key={option.value} label={option.value}>
+            <el-radio key={option.value} label={option.value}>
               {option.label}
-            </rv-radio>
+            </el-radio>
           ))}
-        </rv-radio-group>
-      </rv-form-item>
+        </el-radio-group>
+      </el-form-item>
     )
   }
 }

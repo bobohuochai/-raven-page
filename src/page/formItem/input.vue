@@ -13,8 +13,8 @@ export default class FormItemInput extends Vue {
     let { labelWidth } = this.$attrs
     if (!labelWidth) labelWidth = 'auto'
     return (
-      <rv-form-item label={label} prop={prop} labelWidth={labelWidth}>
-        <rv-input
+      <el-form-item label={label} prop={prop} labelWidth={labelWidth}>
+        <el-input
           clearable
           style="width: 250px"
           value={this.innerValue}
@@ -27,8 +27,8 @@ export default class FormItemInput extends Vue {
               ...this.$listeners
             }
           }}
-        ></rv-input>
-      </rv-form-item>
+        ></el-input>
+      </el-form-item>
     )
   }
 }
