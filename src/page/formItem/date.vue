@@ -23,7 +23,6 @@ export default class FormItemDate extends Vue {
   render() {
     const { label, prop, ...rest } = this.$attrs
     let { labelWidth } = this.$attrs
-    if (!labelWidth) labelWidth = 'auto'
     return (
       <el-form-item label={label} prop={prop} labelWidth={labelWidth}>
         <el-date-picker
