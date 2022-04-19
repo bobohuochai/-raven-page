@@ -2,6 +2,7 @@
 后台管理系统基础CRUD操作交互流程封装，组件依赖：
 * vue 2.x
 * Element UI 2.x
+* 如果用 typescript 版本大于 3.5.1
 
 # Demo
 
