@@ -28,9 +28,8 @@ export default class FormItemRadioGroup extends Vue {
       return
     }
     const { label, prop, ...rest } = this.$attrs
-    let { labelWidth } = this.$attrs
     return (
-      <el-form-item label={label} prop={prop} labelWidth={labelWidth}>
+      <el-form-item label={label} prop={prop}>
         <el-radio-group
           clearable
           vModel={this.innerValue}

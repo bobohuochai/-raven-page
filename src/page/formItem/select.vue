@@ -19,9 +19,8 @@ export default class FormItemSelect extends Vue {
       return
     }
     const { label, prop, ...rest } = this.$attrs
-    let { labelWidth } = this.$attrs
     return (
-      <el-form-item label={label} prop={prop} labelWidth={labelWidth}>
+      <el-form-item label={label} prop={prop}>
         <el-select
           clearable
           style="width: 250px"
