@@ -200,7 +200,6 @@ export default class Page<T, Search extends Record<string, any>> extends Vue {
             {this.$slots.filter_action}
           </div>
         </div>
-        <el-divider />
         <WrapCardTable
           ref="wrapTable"
           config={this.innerTableConfig}
