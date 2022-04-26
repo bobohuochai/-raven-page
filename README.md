@@ -2,9 +2,9 @@
 后台管理系统基础CRUD操作交互流程封装，组件依赖：
 * vue 2.x
 * Element UI 2.x
-* 如果用 typescript 版本大于 3.5.1
+* TypeScript >= 3.5.1
 
-# Demo
+## Demo
 
 ### 1.注册组件
 
@@ -138,13 +138,13 @@ vue.use(Page)
 
 ```
 
-### 结果
+## 结果
 
  ![avatar](https://cdn17.pingpongx.com/static_platform/rvPage.png)
 
 
 
-# 内容
+## 内容
 * ~~查询筛选~~ 
   
 查询Form Item 类型支持：
@@ -187,3 +187,8 @@ vue.use(Page)
 * ~~表格分页排序~~
 * 弹出窗新增，批量新增（todo）
 * 修改，表格直接修改，批量修改，excel修改模式（todo)
+
+## 代码片段
+
+将 [avpage.code-snippets](./avpage.code-snippets) 放到 
+`/Users/<WHO_YOU_ARE>/Library/Application Support/Code/User/snippets` 下，在 `vsocde` 下新建的`.vue`文件内输入 `avpage` 后回车，即可生成代码模板。
