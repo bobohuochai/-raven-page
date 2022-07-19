@@ -12,6 +12,7 @@ import FormItemSelect from './formItem/select.vue'
 import FormItemDate from './formItem/date.vue'
 import FormItemCheckboxGroup from './formItem/checkboxgroup.vue'
 import FormItemRadioGroup from './formItem/radiogroup.vue'
+import FormItemAmountInput from './formItem/amountInput.vue'
 import { omit } from 'lodash'
 
 @Component({
@@ -21,7 +22,8 @@ import { omit } from 'lodash'
     FormItemSelect,
     FormItemDate,
     FormItemCheckboxGroup,
-    FormItemRadioGroup
+    FormItemRadioGroup,
+    FormItemAmountInput
   },
   props: {
     config: {
@@ -130,6 +132,24 @@ export default class QueryForm<T extends Record<string, any>> extends Vue {
               })
             ])}
           </el-form-item>
+        )
+        break
+      case formItemTypeEnum.AMOUNTINPUT:
+        result = (
+          <form-item-amount-input
+            label={label}
+            prop={prop}
+            vModel={(form as T)[`${prop}`]}
+            {...{
+              attrs: rest,
+              on: {
+                'update:value': function (value: number) {
+                  ;(form as any)[`${prop}`] = value
+                },
+                ...on
+              }
+            }}
+          />
         )
         break
     }

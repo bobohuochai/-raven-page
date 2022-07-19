@@ -47,7 +47,8 @@ export enum formItemTypeEnum {
   DATE,
   CHECKBOXGROUP,
   RADIOGROUP,
-  COMPONENT
+  COMPONENT,
+  AMOUNTINPUT
 }
 
 export enum queryFormStyleMode {
